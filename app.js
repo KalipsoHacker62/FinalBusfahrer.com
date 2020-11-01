@@ -597,9 +597,9 @@ function carteTirees(){
 }
 
 document.getElementById('btn-langue-d').addEventListener('click', function(){
-    //langue=3
-    //textLangue(langue);
-    //getLangue();
+    langue=3
+    textLangue(langue);
+    getLangue();
 });
 
 document.getElementById('btn-langue-e').addEventListener('click', function(){

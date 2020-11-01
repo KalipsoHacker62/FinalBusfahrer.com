@@ -1,0 +1,84 @@
+
+.btn-box{
+    @include central;
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+
+   .btn-new{
+    text-decoration: none;
+    text-transform: uppercase;
+    background: none;
+    color: $color-corail;
+    animation: moveInBottom .5s ease-out .75s;
+    animation-fill-mode: backwards;
+    text-align: center;
+    padding: 1.5rem 4rem;
+    border-radius: 10rem;
+    font-size: 2.7rem;
+    transition: .2s;
+    //transition: all .4s;
+    
+   }
+
+   .btn-new:hover{
+    transform: translate(-.1rem);
+    background-color: #fff;
+    box-shadow: 0 2rem 3rem rgba(92, 76, 76, 0.3);
+   }
+
+   .btn-new:active{
+       
+       font-size: 0;
+   }
+
+   .btn-draw{
+    margin-bottom: 40vh;
+    background: none;
+    border: none;
+}  
+
+    .btn-draw:hover{
+        //margin: .1rem;
+        box-shadow: 0 2rem 5rem rgba(0, 0, 0 , .3);
+    }
+
+       
+
+        
+        
+
+.btn-new:active::after{
+    background: none;
+}
+
+.btn-partie{
+    opacity:1;
+
+    &-test{
+        @include hide;
+    }
+    
+   
+    
+}
+.btn-skin{
+    opacity:1;
+    
+    &-test{
+        @include hide;
+    }
+   
+   
+}
+.btn-langue{
+    opacity: 1;
+
+    &-test{
+        @include hide;
+    }
+}

@@ -1,0 +1,60 @@
+@mixin central{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin hide{
+    opacity:0;
+    visibility: hidden;
+}
+
+@mixin visible{
+    opacity: 1;
+    visibility: visible;
+}
+
+@mixin flexCenter{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin playerCards{
+    @include flexCenter;
+    margin-bottom: $card-margin-bottom;
+}
+
+@mixin popupButton{
+        
+                cursor: pointer;
+                color: $color-corail;
+                font-size: 4rem;
+                text-transform: uppercase;
+                background: none;
+                text-align: center;
+                padding: 1.5rem 4rem;
+                border-radius: 10rem;
+                font-size: 2.7rem;
+                transition: .2s;
+                text-decoration: none;
+                
+
+                
+                
+
+                &:hover{
+                    color: $color-white;
+                    background-color: $color-corail;
+                    border-radius: 100px;
+                    transform: translate(-.1rem);
+                    box-shadow: 0 2rem 3rem rgba(0, 0, 0 , .3);
+                }
+}
+
+@mixin cornerBottomLeft{
+                position: fixed;
+                bottom: 2.5rem;
+                left: 2%;
+}

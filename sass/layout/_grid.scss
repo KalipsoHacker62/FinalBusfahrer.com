@@ -1,0 +1,64 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem;
+}
+
+
+
+
+.block{
+    min-width: 100%vh;
+
+    
+    &-1{
+        display: flex;
+        padding: 1rem;
+        flex: 0 0 40%;
+       
+    }
+    &-2{
+        display: flex;
+        padding: 1rem;
+        flex: 0 0 40%;
+        
+    }
+
+
+   
+
+    &-milieu{
+        max-width: 114rem;
+        background-color: $color-corail;
+    }
+    
+
+}
+
+.col{
+
+
+    flex-direction: column;
+    
+    
+    &-1{
+        flex: 1 0 0;
+       
+    }
+    &-2{
+        flex: 1 0 0;
+          
+       }
+
+   
+    &-3{
+        flex: 1 0 0;
+        
+    }
+    &-4{
+        flex: 1 0 0;
+          
+       }
+
+
+}

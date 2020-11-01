@@ -642,7 +642,7 @@ function textLangue(langue){
         document.getElementById('premium-sub').textContent="Bienvenu dans la premium class";
         document.getElementById('premium-text').textContent="Contenu prochainement disponible";
         document.getElementById('partie-titre').textContent="Nouvelle Partie";
-        document.getElementById('premium-sub').textContent="Choisissez le nombre et le noms des joueurs";
+        document.getElementById('partie-sub').textContent="Choisissez le nombre et le noms des joueurs";
         document.getElementById('nomSelect-0').placeholder="Joueur 1";
         document.getElementById('nomSelect-1').placeholder="Joueur 2";
         document.getElementById('nomSelect-2').placeholder="Joueur 3";

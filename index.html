@@ -237,12 +237,12 @@
                 <h3 class="heading-tertiary" id="regles-sub">Un jeu &ndash; Une histoire</h3>
                 </div>
                 <div class="popup__text">
-                    <p class="popup__text__1" id="regles-text">Les règles du Busfahrer : Attention : l'as est la carte la plus forte, le 2 la moins forte; si un joueur fait semblant de boire ses gorgées, il boit un cul-sec. Première partie : Chaque joueur annonce chacun son tour "rouge" ou "noir" ; s'il se trompe, il boit une gorgée, s'il gagne il donne une gorgée. Chaque joueur annonce chacun son tour "au-dessus" ou "en-dessous" par rapport à la carte tirée précédemment ; s'il se trompe, il boit deux gorgées, s'il gagne il donne deux gorgées. Exemple : un joueur a un valet et il annonce "au-dessus" : si la carte est une dame ou au-dessus il a gagné. Chaque joueur annonce chacun son tour "intérieur" ou "extérieur" par rapport aux cartes tirées précédemment ; s'il se trompe, il boit trois gorgées, s'il gagne il donne trois gorgées Exemple : un joueur a un valet et un 9 et il annonce "intérieur" : si la carte est un 10, il a gagné. Chaque joueur annonce chacun son tour "trèfle", "pique", "cœur" ou "carreau" ; s'il se trompe, il boit quatre gorgées, s'il gagne il donne quatre gorgées.
+                    <p class="popup__text__1" id="regles-text-1">Les règles du Busfahrer : Attention : l'as est la carte la plus forte, le 2 la moins forte; si un joueur fait semblant de boire ses gorgées, il boit un cul-sec. Première partie : Chaque joueur annonce chacun son tour "rouge" ou "noir" ; s'il se trompe, il boit une gorgée, s'il gagne il donne une gorgée. Chaque joueur annonce chacun son tour "au-dessus" ou "en-dessous" par rapport à la carte tirée précédemment ; s'il se trompe, il boit deux gorgées, s'il gagne il donne deux gorgées. Exemple : un joueur a un valet et il annonce "au-dessus" : si la carte est une dame ou au-dessus il a gagné. Chaque joueur annonce chacun son tour "intérieur" ou "extérieur" par rapport aux cartes tirées précédemment ; s'il se trompe, il boit trois gorgées, s'il gagne il donne trois gorgées Exemple : un joueur a un valet et un 9 et il annonce "intérieur" : si la carte est un 10, il a gagné. Chaque joueur annonce chacun son tour "trèfle", "pique", "cœur" ou "carreau" ; s'il se trompe, il boit quatre gorgées, s'il gagne il donne quatre gorgées.
                     </p>
-                    <p class="popup__text__2" id="regles-text">Deuxième partie : Chaque joueur conserve les quatre cartes tirées précédemment découvertes. Deux colonnes de sept cartes sont disposées face cachée : une colonne est celle qui permet de donner des gorgées appelée "donne", l'autre fait prendre des gorgées appelée "prend" La colonne du haut est la "donne" et celle du bas la "prend". On tire les cartes une par une en commençant par la colonne "donne" et en alternance jusqu'à ce qu'il n'y ait plus de cartes à retourner - La colonne "donne" permet de donner, dans l'ordre : 1, 3, 5, 7, 9, 11 gorgées puis un cul-sec. Exemple : si la 1ère carte de la colonne "donne" est un 5, si un ou plusieurs joueurs ont un 5, ils donnent une gorgées. La colonne "prend" fait prendre, dans l'ordre : 2, 4, 6, 8, 10, 12 gorgées puis un cul-sec. Exemple : si la 5e carte de la colonne "prend" est un 7, si un ou plusieurs joueurs ont un 7, ils boivent dix gorgées.
+                    <p class="popup__text__2" id="regles-text-2">Deuxième partie : Chaque joueur conserve les quatre cartes tirées précédemment découvertes. Deux colonnes de sept cartes sont disposées face cachée : une colonne est celle qui permet de donner des gorgées appelée "donne", l'autre fait prendre des gorgées appelée "prend" La colonne du haut est la "donne" et celle du bas la "prend". On tire les cartes une par une en commençant par la colonne "donne" et en alternance jusqu'à ce qu'il n'y ait plus de cartes à retourner - La colonne "donne" permet de donner, dans l'ordre : 1, 3, 5, 7, 9, 11 gorgées puis un cul-sec. Exemple : si la 1ère carte de la colonne "donne" est un 5, si un ou plusieurs joueurs ont un 5, ils donnent une gorgées. La colonne "prend" fait prendre, dans l'ordre : 2, 4, 6, 8, 10, 12 gorgées puis un cul-sec. Exemple : si la 5e carte de la colonne "prend" est un 7, si un ou plusieurs joueurs ont un 7, ils boivent dix gorgées.
                     </p>
                 </div>
-                <a href="https://en.wikipedia.org/wiki/Ride_the_bus" target="_blank" class="popup__btn">En savoir +</a>
+                <a href="https://en.wikipedia.org/wiki/Ride_the_bus" target="_blank" class="popup__btn" id="btn-ensavoirplus">En savoir +</a>
             </div>
             
         </div>
@@ -280,27 +280,30 @@
         <div class="popup__content">
             <a href="#navi-toggle" class="popup__close">&times</a>
             <div class="popup__apparences-left">
-                <img src="img/noir/0.png" alt="skin" id="skin" class="popup__img">
+                <div class="popup__apparences-entete">
+                    
+                    <h2 class="heading-secondary" id="apparences-titre">Apparences</h2>
+                    <h3 class="heading-tertiary" id="apparences-sub">Selectionnez votre skin de carte</h3>
+                </div>
+                
+                <img src="img/noir/0.png" alt="skin" id="skin" class="popup__apparences-img">
+                <label href="#" for="btn-skin" class="popup__apparences-btn-skin" id="apparences-ok">Enregistrer</label>
             </div>
             <div class="popup__apparences-right">
                 
-                <div class="popup__apparences-entete">
-                    
-                <h2 class="heading-secondary">Apparences</h2>
-                <h3 class="heading-tertiary">Selectionnez votre skin de carte</h3>
-                </div>
+                
                 <div class="popup__apparences-selector">
 
-                    <form action="results.php" method="POST" class="__apparences-form" id="skinSelection">
+                    <form action="results.php" method="POST" class="popup__apparences-form" id="skinSelection">
                         <select class="popup__apparences-selector" name="skin" id="skin">
                             <option value="1" id="skinSelected-0">Noir</option>
                             <option value="2" id="skinSelected-1">Blanc</option>
-                            <option value="3" id="skinSelected-2">Cul</option>
-                            <option value="4" id="skinSelected-3">Poney</option>
+                            <option value="3" id="skinSelected-2">Grec</option>
+                            <option value="4" id="skinSelected-3">Horse</option>
 
                         </select><br>
                     </form>
-                    <label href="#" for="btn-skin" class="popup__apparences-btn-skin" id="apparences-ok">Enregistrer</label>
+                    
                     
                     
                 </div>
@@ -350,23 +353,23 @@
                 <form class="popup__new-form" id="setupPartie">
         
         
-                    1 <input type="radio" name="nombreJoueur" value="0" id="nombreJoueur-0" checked>
-                    <input type="text" name="nom-joueur-0" placeholder="Joueur 1" id=nomSelect-0><br>
-                    2 <input type="radio" name="nombreJoueur" value="1" id="nombreJoueur-1">
-                    <input type="text" name="nom-joueur-1" placeholder="Joueur 2" id=nomSelect-1><br>
-                    3 <input type="radio" name="nombreJoueur" value="2" id="nombreJoueur-2">
-                    <input type="text" name="nom-joueur-2" placeholder="Joueur 3" id=nomSelect-2><br>
-                    4 <input type="radio" name="nombreJoueur" value="3" id="nombreJoueur-3">
-                    <input type="text" name="nom-joueur-3" placeholder="Joueur 4" id=nomSelect-3><br>
-                    5 <input type="radio" name="nombreJoueur" value="4" id="nombreJoueur-4">
-                    <input type="text" name="nom-joueur-4" placeholder="Joueur 5" id=nomSelect-4><br>
-                    6 <input type="radio" name="nombreJoueur" value="5" id="nombreJoueur-5">
-                    <input type="text" name="nom-joueur-5" placeholder="Joueur 6" id=nomSelect-5><br>
-                    7 <input type="radio" name="nombreJoueur" value="6" id="nombreJoueur-6">
-                    <input type="text" name="nom-joueur-6" placeholder="Joueur 7" id=nomSelect-6><br>
-                    8 <input type="radio" name="nombreJoueur" value="7" id="nombreJoueur-7">
-                    <input type="text" name="nom-joueur-7" placeholder="Joueur 8" id=nomSelect-7><br> 
-                    <label for="btn-partie" class="popup__new-btn-partie">Enregistrer</label>
+                    1 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="0" id="nombreJoueur-0" checked>
+                    <input type="text" class=popup__new-form-text name="nom-joueur-0" placeholder="Joueur 1" id=nomSelect-0><br>
+                    2 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="1" id="nombreJoueur-1">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-1" placeholder="Joueur 2" id=nomSelect-1><br>
+                    3 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="2" id="nombreJoueur-2">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-2" placeholder="Joueur 3" id=nomSelect-2><br>
+                    4 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="3" id="nombreJoueur-3">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-3" placeholder="Joueur 4" id=nomSelect-3><br>
+                    5 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="4" id="nombreJoueur-4">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-4" placeholder="Joueur 5" id=nomSelect-4><br>
+                    6 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="5" id="nombreJoueur-5">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-5" placeholder="Joueur 6" id=nomSelect-5><br>
+                    7 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="6" id="nombreJoueur-6">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-6" placeholder="Joueur 7" id=nomSelect-6><br>
+                    8 <input type="radio" class=popup__new-form-radio name="nombreJoueur" value="7" id="nombreJoueur-7">
+                    <input type="text" class=popup__new-form-text name="nom-joueur-7" placeholder="Joueur 8" id=nomSelect-7><br> 
+                    <label for="btn-partie" class="popup__new-btn-partie" id="new-btn-enregistrer">Enregistrer</label>
                     
                 </form>
             </div>

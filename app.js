@@ -148,6 +148,7 @@ function stockageCarte(tour, round, tourTotal){
         tour=0;
         round++;
     }
+    
     partieEnCours.round=round;
     partieEnCours.tour=tour;
     partieEnCours.tourTotal=tourTotal;
@@ -413,6 +414,9 @@ function init0(){
     cartesDonne=[];
     cartesPrend=[];
     cartesCentrale=[cartesDonne, cartesPrend];
+    document.getElementById('btn-new').textContent='New game';
+    document.getElementById('comment').textContent='Busfahrer';
+    document.getElementById('comment2').textContent='Un'+' '+'Jeu'+' '+'Allemand';
     for(i=0; i<8; i++){
         document.getElementById('name-'+i).textContent=' ';
         document.getElementById('text-'+i).textContent=' ';
@@ -728,7 +732,7 @@ function textLangue(langue){
 
         
     }
-    if(playing===true){
+    if(playing===true ){
         document.getElementById('btn-new').textContent='';
         document.getElementById('comment').textContent='';
         document.getElementById('comment2').textContent='';

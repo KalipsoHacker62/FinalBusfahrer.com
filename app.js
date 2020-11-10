@@ -13,6 +13,7 @@ var Joueur = function(name, carteDuJoueur, numeroJoueur, text){
 var tableauValeurCarte, cartesDonne, cartesPrend, cartesCentrales, tableauDeCarte, test, joueur, nomDuJoueur, nombreJoueur, joueurs, tour, round, nombreDeTour, cartesDuMilieu, tourTotal, playing, skinCarte, skin, nombreDeSkin, aff, tableauDeCarteTire, langue;
 
 skin='noir';
+langue=1;
 
 
 
@@ -124,7 +125,10 @@ function stockageCarte(tour, round, tourTotal){
             resetDOM.src='img/'+skin+'/0.png';
         }
         round++;
-    }else if(round>=4 && tour<=13){
+        tour=0;
+    }
+
+    if((round>=4 && tour<=13) || (round>=4 && tour===0)){
         
         document.getElementById('comment').textContent='';
         document.getElementById('comment2').textContent='';
@@ -139,6 +143,7 @@ function stockageCarte(tour, round, tourTotal){
         }
         
         partieEnCours.cartesCentrale=[partieEnCours.cartesDonne, partieEnCours.cartesPrend];
+        
         distribution(tour);
     }
     
@@ -190,73 +195,103 @@ function attributionDesValeurs(){
 }
 
 function distribution(tour){
+    
+    var gorgees;
+    var text;
     for(j=0; j<nombreJoueur; j++){
-      
+      gorgees=0;
+      text=0;
         for(i=0; i<4; i++){
 
-            if(getLangue()===1){
-
             
-                if(partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' donnes '+ (tour+1)+' gorgees !');
-                    
-        
-                }else if(partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' prends '+ (tour+1)+' gorgees  !');
-                    
-        
-        
-                }else if (partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' donnes '+' un '+' cul-sec '+' !');
-                    
-                }else if (partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' prends '+' un cul-sec '+' !');
-                    
-                }
+            if(partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
+                
+                gorgees=gorgees+tour+1;
+                text=1;
+                console.log('text1');
 
-            }else if(getLangue()===2){
-                if(partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' give '+ (tour+1)+' sips !');
-                    
-        
-                }else if(partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' take '+ (tour+1)+' sips  !');
-                    
-        
-        
-                }else if (partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' give '+' one shot '+' !');
-                    
-                }else if (partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' take '+' one shot '+' !');
-                    
-                }
+                
+            }else if(partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
+                gorgees=gorgees+tour+1;
+                text=2;
+                console.log('text2');
 
-            }else if(getLangue()===3){
-                if(partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' gibst '+ (tour+1)+' Schlucke !');
+            }else if (partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
+                gorgees=gorgees+1;
+                text=3;
+                console.log('text3');
+                
+            }else if (partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
+                gorgees=gorgees+1;
+                text=4;
+                console.log('text4');
                     
-        
-                }else if(partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' nimmst '+ (tour+1)+' Schlucke  !');
-                    
-        
-        
-                }else if (partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' gibst '+' ein volles Glas '+' !');
-                    
-                }else if (partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' nimmst '+' ein volles Glas '+' !');
-                    
+            }
+            
+            
+        }
+        if(gorgees!=0){
+            if(langue===1){
+                if(text===1){         
+                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' donnes '+ gorgees +' gorgee·s !');
                 }
+        
+                if(text===2){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' prends '+ gorgees +' gorgee·s  !');
+                }
+        
+                if(text===3){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' donnes '+ gorgees +' cul-sec '+' !');
+                }
+        
+                if(text===4){
+                joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' prends '+ gorgees +' cul-sec '+' !');
+                }
+            }
 
+
+            if(langue===2){
+                if(text===1){         
+                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' give '+ gorgees+' sip·s !');
+                }
+        
+                if(text===2){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' take '+ gorgees+' sip·s !');
+                }
+        
+                if(text===3){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' give '+gorgees+' shot·s '+' !');
+                }
+        
+                if(text===4){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' take '+gorgees+' shot·s '+' !');
+                }
             }
 
 
 
-            document.getElementById('text-'+j).textContent=joueurs[j].text;
-            
+            if(langue===3){
+                
+                if(text===1){         
+                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' gibst '+ gorgees+' Schlucke·n !');
+                }
+        
+                if(text===2){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' nimmst '+ gorgees+' Schlucke·n  !');
+                }
+        
+                if(text===3){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' gibst '+gorgees+' volle·s·en Glas·er '+' !');
+                }
+        
+                if(text===4){
+                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' nimmst '+gorgees+' volle·s·en Glas·er '+' !');
+                }
+            }
         }
+        
+
+        document.getElementById('text-'+j).textContent=joueurs[j].text;
 
     }
     
@@ -395,7 +430,6 @@ function init0(){
     nombreDeSkin=4;
     tableauDeCarte=[];
     tableauDeCarteTire=[];
-    langue=1;
     cartesCentrales=0;
     nomDuJoueur='';
     nombreJoueur='';
@@ -597,19 +631,19 @@ function carteTirees(){
 }
 
 document.getElementById('btn-langue-d').addEventListener('click', function(){
-    langue=3
+    langue=3;
     textLangue(langue);
     getLangue();
 });
 
 document.getElementById('btn-langue-e').addEventListener('click', function(){
-    langue=2
+    langue=2;
     textLangue(langue);
     getLangue();
 });
 
 document.getElementById('btn-langue-f').addEventListener('click', function(){
-    langue=1
+    langue=1;
     textLangue(langue);
     getLangue();
 });
@@ -621,13 +655,13 @@ function textLangue(langue){
 
 
     if (langue===1){
-        document.getElementById('regles').textContent="Régles";
+        document.getElementById('regles').textContent="Règles";
         document.getElementById('langues').textContent="Langues";
         document.getElementById('apparences').textContent="Apparences";
         document.getElementById('premium').textContent="Premium";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="Un"+" "+"jeu"+" "+"allemand";
-        document.getElementById('regles-titre').textContent="Les régles du Busfahrer";
+        document.getElementById('regles-titre').textContent="Les règles du Busfahrer";
         document.getElementById('regles-text-1').textContent="Les règles du Busfahrer : Attention : - l\'as est la carte la plus forte, le 2 la moins forte - si un joueur fait semblant de boire ses gorgées, il boit un cul-sec Première partie : - Chaque joueur annonce chacun son tour \"rouge\" ou \"noir\" ; s\'il se trompe, il boit une gorgée, s\'il gagne il donne une gorgée - Chaque joueur annonce chacun son tour \"au-dessus\" ou \"en-dessous\" par rapport à la carte tirée précédemment ; s\'il se trompe, il boit deux gorgées, s\'il gagne il donne deux gorgées Exemple : un joueur a un valet et il annonce \"au-dessus\" : si la carte est une dame ou au-dessus il a gagné -Chaque joueur annonce chacun son tour \"intérieur\" ou \"extérieur\" par rapport aux cartes tirées précédemment ; s\'il se trompe, il boit trois gorgées, s\'il gagne il donne trois gorgées Exemple : un joueur a un valet et un 9 et il annonce \"intérieur\" : si la carte est un 10, il a gagné - Chaque joueur annonce chacun son tour \"trèfle\", \"pique\", \"cœur\" ou \"carreau\" ; s\'il se trompe, il boit quatre gorgées, s\'il gagne il donne quatre gorgées";
         document.getElementById('regles-text-2').textContent="Deuxième partie : - Chaque joueur conserve les quatre cartes tirées précédemment découvertes - Deux colonnes de sept cartes sont disposées face cachée : une colonne est celle qui permet de donner des gorgées appelée \"donne\", l\'autre fait prendre des gorgées appelée \"prend\" -La colonne du haut est la \"donne\" et celle du bas la \"prend\" - On tire les cartes une par une en commençant par la colonne \"donne\" et en alternance jusqu'à ce qu'il n'y ait plus de cartes à retourner - La colonne \"donne\" permet de donner, dans l\'ordre : 1, 3, 5, 7, 9, 11 gorgées puis un cul-sec Exemple : si la 1ère carte de la colonne \"donne\" est un 5, si un ou plusieurs joueurs ont un 5, ils donnent une gorgées - La colonne \"prend\" fait prendre, dans l'ordre : 2, 4, 6, 8, 10, 12 gorgées puis un cul-sec Exemple : si la 5e carte de la colonne \"prend\" est un 7, si un ou plusieurs joueurs ont un 7, ils boivent dix gorgées";
         document.getElementById('regles-sub').textContent="Un jeu une histoire";

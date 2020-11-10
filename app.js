@@ -450,6 +450,8 @@ function init0(){
         for(j=1; j<5; j++){
             var imgInit=document.getElementById('J'+i+'-carte'+(j));
             imgInit.src='';
+            var btnInit=document.getElementById('J'+i+'-btn-'+(j-1));
+            btnInit.src='';
             
         }
     }

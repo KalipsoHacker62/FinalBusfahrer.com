@@ -68,6 +68,7 @@ h3 {
   align-items: center; }
 
 .btn-new {
+  position: fixed;
   text-decoration: none;
   text-transform: uppercase;
   background: none;
@@ -78,7 +79,9 @@ h3 {
   padding: 1.5rem 4rem;
   border-radius: 10rem;
   font-size: 2.7rem;
-  transition: .2s; }
+  transition: .2s;
+  width: 24rem;
+  top: 30rem; }
 
 .btn-new:hover {
   transform: translate(-0.1rem);
@@ -86,10 +89,11 @@ h3 {
   box-shadow: 0 2rem 3rem rgba(92, 76, 76, 0.3); }
 
 .btn-new:active {
-  font-size: 0; }
+  font-size: 2rem; }
 
 .btn-draw {
-  margin-bottom: 40vh;
+  position: fixed;
+  top: -36vh;
   background: none;
   border: none; }
 
@@ -117,11 +121,28 @@ h3 {
     opacity: 0;
     visibility: hidden; }
 
+.btn-lot {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  z-index: 5; }
+
+.btn-J {
+  display: none;
+  visibility: hidden; }
+
+.btn-J:hover {
+  box-shadow: 0 0rem 3.5rem white; }
+
 .card {
-  max-width: 20rem;
+  max-width: 15rem;
   border-radius: 0.5rem; }
 
 .cartes-milieu {
+  position: fixed;
+  bottom: 3rem;
+  left: 50%;
+  transform: translate(-50%, 0);
   padding: 1rem;
   display: flex;
   flex-direction: column; }
@@ -136,12 +157,12 @@ h3 {
 
 .mcarte {
   flex: 1 0 0;
-  max-width: 20rem;
+  max-width: 12rem;
   border-radius: 0.5rem; }
 
 .carte {
   flex: 1 0 0;
-  max-width: 7rem;
+  width: 7rem;
   border-radius: 0.3rem; }
 
 .player-panel {
@@ -228,10 +249,11 @@ h3 {
   text-align: center;
   font-size: 150%;
   font-weight: 400;
-  color: #ce2e2e;
+  color: black;
   line-height: 100%;
-  min-height: 6rem;
-  font-style: bold; }
+  height: 6rem;
+  font-style: bold;
+  z-index: 10; }
 
 .popup {
   height: 100%;
@@ -517,7 +539,7 @@ h3 {
 
 .header {
   height: 95vh;
-  background-image: linear-gradient(to right bottom, rgba(99, 226, 220, 0.8), rgba(9, 52, 131, 0.8)), url(img/background.jpg);
+  background-image: linear-gradient(to bottom, rgba(99, 226, 220, 0.8), rgba(9, 52, 131, 0.8)), url(img/background.jpg);
   background-size: cover;
   background-position: top; }
 

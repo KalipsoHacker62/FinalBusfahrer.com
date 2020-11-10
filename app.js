@@ -13,16 +13,8 @@ var Joueur = function(name, carteDuJoueur, numeroJoueur, text){
 var tableauValeurCarte, cartesDonne, cartesPrend, cartesCentrales, tableauDeCarte, test, joueur, nomDuJoueur, nombreJoueur, joueurs, tour, round, nombreDeTour, cartesDuMilieu, tourTotal, playing, skinCarte, skin, nombreDeSkin, aff, tableauDeCarteTire, langue;
 
 skin='noir';
-langue=1;
-
-
-
-
-
-
-
-
-
+langue=2;
+langueInit(langue);
 
 
 
@@ -233,38 +225,38 @@ function distribution(tour){
         if(gorgees!=0){
             if(langue===1){
                 if(text===1){         
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' donnes '+ gorgees +' gorgee·s !');
+                    joueurs[j].text=(joueurs[j].name+ ' donne '+ gorgees +' gorgee·s !');
                 }
         
                 if(text===2){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' prends '+ gorgees +' gorgee·s  !');
+                    joueurs[j].text=(joueurs[j].name+ ' prend '+ gorgees +' gorgee·s  !');
                 }
         
                 if(text===3){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' donnes '+ gorgees +' cul-sec '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' donne '+ gorgees +' cul-sec '+' !');
                 }
         
                 if(text===4){
-                joueurs[j].text=(joueurs[j].name+ ', '+' tu '+' prends '+ gorgees +' cul-sec '+' !');
+                joueurs[j].text=(joueurs[j].name+ ' prend '+ gorgees +' cul-sec '+' !');
                 }
             }
 
 
             if(langue===2){
                 if(text===1){         
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' give '+ gorgees+' sip·s !');
+                    joueurs[j].text=(joueurs[j].name+ ' gives '+ gorgees+' sip·s !');
                 }
         
                 if(text===2){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' take '+ gorgees+' sip·s !');
+                    joueurs[j].text=(joueurs[j].name+ ' takes '+ gorgees+' sip·s !');
                 }
         
                 if(text===3){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' give '+gorgees+' shot·s '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' gives '+gorgees+' shot·s '+' !');
                 }
         
                 if(text===4){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' you '+' take '+gorgees+' shot·s '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' takes '+gorgees+' shot·s '+' !');
                 }
             }
 
@@ -273,19 +265,19 @@ function distribution(tour){
             if(langue===3){
                 
                 if(text===1){         
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' gibst '+ gorgees+' Schlucke·n !');
+                    joueurs[j].text=(joueurs[j].name+ ' gibt '+ gorgees+' Schlucke·n !');
                 }
         
                 if(text===2){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' nimmst '+ gorgees+' Schlucke·n  !');
+                    joueurs[j].text=(joueurs[j].name+ ' nimmt '+ gorgees+' Schlucke·n  !');
                 }
         
                 if(text===3){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' gibst '+gorgees+' volle·s·en Glas·er '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' gibt '+gorgees+' volle·s Glas·er '+' !');
                 }
         
                 if(text===4){
-                    joueurs[j].text=(joueurs[j].name+ ', '+' Du '+' nimmst '+gorgees+' volle·s·en Glas·er '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' nimmt '+gorgees+' volle·s Glas·er '+' !');
                 }
             }
         }
@@ -448,9 +440,10 @@ function init0(){
     cartesDonne=[];
     cartesPrend=[];
     cartesCentrale=[cartesDonne, cartesPrend];
-    document.getElementById('btn-new').textContent='New game';
-    document.getElementById('comment').textContent='Busfahrer';
-    document.getElementById('comment2').textContent='Un'+' '+'Jeu'+' '+'Allemand';
+    //document.getElementById('btn-new').textContent='New game';
+    //document.getElementById('comment').textContent='Busfahrer';
+    //document.getElementById('comment2').textContent='Un'+' '+'Jeu'+' '+'Allemand';
+    
     for(i=0; i<8; i++){
         document.getElementById('name-'+i).textContent=' ';
         document.getElementById('text-'+i).textContent=' ';
@@ -661,6 +654,7 @@ function textLangue(langue){
         document.getElementById('premium').textContent="Premium";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="Un"+" "+"jeu"+" "+"allemand";
+
         document.getElementById('regles-titre').textContent="Les règles du Busfahrer";
         document.getElementById('regles-text-1').textContent="Les règles du Busfahrer : Attention : - l\'as est la carte la plus forte, le 2 la moins forte - si un joueur fait semblant de boire ses gorgées, il boit un cul-sec Première partie : - Chaque joueur annonce chacun son tour \"rouge\" ou \"noir\" ; s\'il se trompe, il boit une gorgée, s\'il gagne il donne une gorgée - Chaque joueur annonce chacun son tour \"au-dessus\" ou \"en-dessous\" par rapport à la carte tirée précédemment ; s\'il se trompe, il boit deux gorgées, s\'il gagne il donne deux gorgées Exemple : un joueur a un valet et il annonce \"au-dessus\" : si la carte est une dame ou au-dessus il a gagné -Chaque joueur annonce chacun son tour \"intérieur\" ou \"extérieur\" par rapport aux cartes tirées précédemment ; s\'il se trompe, il boit trois gorgées, s\'il gagne il donne trois gorgées Exemple : un joueur a un valet et un 9 et il annonce \"intérieur\" : si la carte est un 10, il a gagné - Chaque joueur annonce chacun son tour \"trèfle\", \"pique\", \"cœur\" ou \"carreau\" ; s\'il se trompe, il boit quatre gorgées, s\'il gagne il donne quatre gorgées";
         document.getElementById('regles-text-2').textContent="Deuxième partie : - Chaque joueur conserve les quatre cartes tirées précédemment découvertes - Deux colonnes de sept cartes sont disposées face cachée : une colonne est celle qui permet de donner des gorgées appelée \"donne\", l\'autre fait prendre des gorgées appelée \"prend\" -La colonne du haut est la \"donne\" et celle du bas la \"prend\" - On tire les cartes une par une en commençant par la colonne \"donne\" et en alternance jusqu'à ce qu'il n'y ait plus de cartes à retourner - La colonne \"donne\" permet de donner, dans l\'ordre : 1, 3, 5, 7, 9, 11 gorgées puis un cul-sec Exemple : si la 1ère carte de la colonne \"donne\" est un 5, si un ou plusieurs joueurs ont un 5, ils donnent une gorgées - La colonne \"prend\" fait prendre, dans l'ordre : 2, 4, 6, 8, 10, 12 gorgées puis un cul-sec Exemple : si la 5e carte de la colonne \"prend\" est un 7, si un ou plusieurs joueurs ont un 7, ils boivent dix gorgées";
@@ -671,7 +665,7 @@ function textLangue(langue){
         document.getElementById('apparences-sub').textContent="Selectionnez votre skin";
         document.getElementById('skinSelected-0').textContent="Noir";
         document.getElementById('skinSelected-1').textContent="Blanc";
-        document.getElementById('apparences-ok').textContent="Enregistrer";
+        document.getElementById('apparences-ok').textContent="Appliquer";
         document.getElementById('premium-titre').textContent="Premium";
         document.getElementById('premium-sub').textContent="Bienvenu dans la premium class";
         document.getElementById('premium-text').textContent="Contenu prochainement disponible";
@@ -696,6 +690,7 @@ function textLangue(langue){
         document.getElementById('premium').textContent="Premium";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="A"+" "+"german"+" "+"game";
+
         document.getElementById('regles-titre').textContent="Busfahrer's rules";
         document.getElementById('regles-text-1').textContent="Busfahrer rules: Warning: the ace is the strongest card, the 2 the weakest; if a player pretends to drink his sips, he drinks a dead ass. First part: Each player each announces his turn \"red\" or \"black\"; if he is wrong, he takes a sip, if he wins he takes a sip. Each player in turn announces “above” or “below” compared to the card drawn previously; if he is wrong, he drinks two sips, if he wins he gives two sips. Example: a player has a jack and he announces “over”: if the card is a queen or above he has won. Each player each announces his turn \"inside\" or \"outside\" in relation to the cards drawn previously; if he is wrong, he drinks three sips, if he wins he gives three sips Example: a player has a jack and a 9 and he announces \"inside\": if the card is a 10, he has won. Each player in turn announces \"clubs\", \"spades\", \"hearts\" or \"diamonds\"; if he is wrong, he drinks four mouthfuls, if he wins he gives four mouthfuls.";
         document.getElementById('regles-text-2').textContent="Second part: Each player keeps the four cards drawn previously discovered. Two columns of seven cards are placed face down: one column is the one that allows you to give sips called \"deal\", the other has sips to be taken called \"takes\" The top column is the \"deal\" and the bottom one is the \"take\". The cards are drawn one by one, starting with the \"deal\" column and alternately until there are no more cards to turn over - The \"deal\" column allows you to deal, in order: 1 , 3, 5, 7, 9, 11 sips then a dry ass. Example: if the 1st card in the \"deals\" column is a 5, if one or more players have a 5, they give a sip. The column \"takes\" takes, in the order: 2, 4, 6, 8, 10, 12 sips then a cul-sec. Example: if the 5th card in the \"takes\" column is a 7, if one or more players have a 7, they drink ten sips.";
@@ -708,9 +703,9 @@ function textLangue(langue){
         document.getElementById('skinSelected-1').textContent="White";
         document.getElementById('skinSelected-2').textContent="Greek";
         document.getElementById('skinSelected-3').textContent="Horse";
-        document.getElementById('apparences-ok').textContent="Save";
+        document.getElementById('apparences-ok').textContent="Apply";
         document.getElementById('premium-titre').textContent="Premium";
-        document.getElementById('premium-sub').textContent="Welcome in the premium class";
+        document.getElementById('premium-sub').textContent="Welcome to the premium";
         document.getElementById('premium-text').textContent="Content available soon";
         document.getElementById('partie-titre').textContent="New Game";
         document.getElementById('partie-sub').textContent="Choose the number of players and their names";
@@ -733,6 +728,7 @@ function textLangue(langue){
         document.getElementById('premium').textContent="Prämie";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="Ein"+" "+"Deutsches"+" "+"Spiel";
+
         document.getElementById('regles-titre').textContent="Die Spielregeln";
         document.getElementById('regles-text-1').textContent="Busfahrer-Regeln: Warnung: Das Ass ist die stärkste Karte, die 2 die schwächste; Wenn ein Spieler vorgibt, seine Schlucke zu trinken, trinkt er einen toten Arsch. Erster Teil: Jeder Spieler kündigt an, dass er an der Reihe ist \"rot\" oder \"schwarz\"; Wenn er sich irrt, nimmt er einen Schluck, wenn er gewinnt, nimmt er einen Schluck. Jeder Spieler kündigt seinerseits \"oben\" oder \"unten\" im Vergleich zu der zuvor gezogenen Karte an. Wenn er sich irrt, trinkt er zwei Schlucke, wenn er gewinnt, gibt er zwei Schlucke. Beispiel: Ein Spieler hat einen Wagenheber und kündigt \"vorbei\" an: Wenn die Karte eine Königin oder höher ist, hat er gewonnen. Jeder Spieler gibt seinen Zug \"innen\" oder \"außen\" in Bezug auf die zuvor gezogenen Karten bekannt. Wenn er sich irrt, trinkt er drei Schlucke, wenn er gewinnt, gibt er drei Schlucke. Beispiel: Ein Spieler hat einen Wagenheber und eine 9 und er kündigt \"innen\" an: Wenn die Karte eine 10 ist, hat er gewonnen. Jeder Spieler kündigt seinerseits \"Keulen\", \"Pik\", \"Herzen\" oder \"Diamanten\" an; Wenn er sich irrt, trinkt er vier Bissen, wenn er gewinnt, gibt er vier Bissen.";
         document.getElementById('regles-text-2').textContent="Zweiter Teil: Jeder Spieler behält die vier zuvor entdeckten Karten. Zwei Spalten mit sieben Karten werden verdeckt platziert: In einer Spalte können Sie Schlucke mit der Bezeichnung \"Deal\" geben, in der anderen Spalte mit \"Takes\". Die obere Spalte ist der \"Deal\" und die untere Spalte die Aufnahme. Die Karten werden einzeln gezogen, beginnend mit der Spalte \"Deal\" und abwechselnd bis keine Karten mehr umgedreht werden müssen. In der Spalte \"Deal\" können Sie in der folgenden Reihenfolge austeilen: 1, 3, 5, 7, 9, 11 Schlucke dann ein trockener Arsch. Beispiel: Wenn die erste Karte in der Spalte \"Deals\" eine 5 ist und ein oder mehrere Spieler eine 5 haben, geben sie einen Schluck. Die Spalte \"nimmt\" nimmt in der Reihenfolge: 2, 4, 6, 8, 10, 12 Schlucke, dann eine Sekunde. Beispiel: Wenn die 5. Karte in der Spalte \"Takes\" eine 7 ist und ein oder mehrere Spieler eine 7 haben, trinken sie zehn Schlucke.";
@@ -774,6 +770,37 @@ function textLangue(langue){
 
 }
 
+function langueInit(langue){
+
+    if(langue===1){
+        document.getElementById('regles').textContent="Règles";
+        document.getElementById('langues').textContent="Langues";
+        document.getElementById('apparences').textContent="Apparences";
+        document.getElementById('premium').textContent="Premium";
+        document.getElementById('btn-new').textContent="New-game";
+        document.getElementById('comment2').textContent="Un"+" "+"jeu"+" "+"allemand";
+    }
+
+    if(langue===2){
+        document.getElementById('regles').textContent="Rules";
+        document.getElementById('langues').textContent="Languages";
+        document.getElementById('apparences').textContent="Skin";
+        document.getElementById('premium').textContent="Premium";
+        document.getElementById('btn-new').textContent="New-game";
+        document.getElementById('comment2').textContent="A"+" "+"german"+" "+"game";
+        
+    }
+
+    if(langue===3){
+        document.getElementById('regles').textContent="Regeln";
+        document.getElementById('langues').textContent="Sprachen";
+        document.getElementById('apparences').textContent="Auftritte";
+        document.getElementById('premium').textContent="Prämie";
+        document.getElementById('btn-new').textContent="New-game";
+        document.getElementById('comment2').textContent="Ein"+" "+"Deutsches"+" "+"Spiel";
+    }
+    
+}
 
 
 //langue=1 : français

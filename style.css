@@ -548,6 +548,10 @@ h3 {
     font-size: 3rem;
     margin-bottom: 6rem; }
 
+.navigation__invisible {
+  display: none;
+  visibility: hidden; }
+
 .navigation__checkbox {
   display: none; }
 

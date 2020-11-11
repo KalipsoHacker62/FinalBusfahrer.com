@@ -440,10 +440,8 @@ function init0(){
     cartesDonne=[];
     cartesPrend=[];
     cartesCentrale=[cartesDonne, cartesPrend];
-    //document.getElementById('btn-new').textContent='New game';
-    //document.getElementById('comment').textContent='Busfahrer';
-    //document.getElementById('comment2').textContent='Un'+' '+'Jeu'+' '+'Allemand';
-    
+    langueInit(langue);
+    document.getElementById('comment').textContent='Busfahrer';
     for(i=0; i<8; i++){
         document.getElementById('name-'+i).textContent=' ';
         document.getElementById('text-'+i).textContent=' ';
@@ -546,9 +544,7 @@ document.getElementById('btn-skin').addEventListener('click', function(){
         var apparencesDOM= document.getElementById('skin');
         apparencesDOM.style.display='block';
         apparencesDOM.src= 'img/'+skin+'/0.png';
-        console.log(nombreJoueur);
-        console.log(getTourTotal());
-        console.log("BITE");
+       
 
         if(getTourTotal()<nombreJoueur*4 && getTourTotal()>0){
             

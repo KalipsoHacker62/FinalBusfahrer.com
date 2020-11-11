@@ -1,4 +1,9 @@
 .navigation{
+    &__invisible{
+        display: none;
+        visibility: hidden;
+        }
+
 
     &__checkbox{
         display: none;
@@ -137,5 +142,6 @@
         transform: rotate(-135deg);
         
     }
+
 
 }

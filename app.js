@@ -645,6 +645,48 @@ document.getElementById('btn-langue-f').addEventListener('click', function(){
 
 
 
+document.getElementById('chat-logo').addEventListener('click' ,function(){ 
+
+    for(i=21; i>0; i--){
+        
+        
+        if(document.getElementById('chat-msg-'+i).textContent==""){
+            document.getElementById('chat-msg-'+i).textContent=document.getElementById('chat-text').value;
+            document.getElementById('chat-text').value="";
+            
+            i=i+21
+        }
+    }
+
+});
+
+
+function uniKeyCode(event){
+    
+    var uni = event.which;
+    console.log(uni);
+    return uni;
+}
+
+function pressEnter(uni){
+
+    if(uni===13){
+        for(i=21; i>0; i--){
+
+            if(document.getElementById('chat-msg-'+i).textContent==""){
+                document.getElementById('chat-msg-'+i).textContent=document.getElementById('chat-text').value;
+                document.getElementById('chat-text').value="";
+                
+                i=i+21
+            }
+        }
+    }
+}
+    
+
+
+
+
 
 function textLangue(langue){
 

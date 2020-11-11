@@ -10,6 +10,7 @@
 
 
    .btn-new{
+    position: fixed;
     text-decoration: none;
     text-transform: uppercase;
     background: none;
@@ -21,6 +22,9 @@
     border-radius: 10rem;
     font-size: 2.7rem;
     transition: .2s;
+    width: 24rem;
+    top: 30rem;
+    
     //transition: all .4s;
     
    }
@@ -32,12 +36,12 @@
    }
 
    .btn-new:active{
-       
-       font-size: 0;
+       font-size: 2rem;
    }
 
    .btn-draw{
-    margin-bottom: 40vh;
+    position: fixed;
+    top: -36vh;
     background: none;
     border: none;
 }  
@@ -81,4 +85,28 @@
     &-test{
         @include hide;
     }
+}
+
+.btn-lot{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    z-index: 5;
+    
+    
+    
+}
+
+.btn-J{
+    display: none;
+    visibility: hidden;
+   
+
+    
+    
+
+}
+.btn-J:hover{
+    box-shadow: 0 0rem 3.5rem rgba(255, 255, 255, 1);
 }

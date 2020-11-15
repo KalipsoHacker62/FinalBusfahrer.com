@@ -30,13 +30,13 @@
         
                 cursor: pointer;
                 color: $color-corail;
-                font-size: 4rem;
+                font-size: 5.333333vh;
                 text-transform: uppercase;
                 background: none;
                 text-align: center;
-                padding: 1.5rem 4rem;
-                border-radius: 10rem;
-                font-size: 2.7rem;
+                padding: 2vh 5.333333vh;
+                border-radius: 13.333333vh;
+                font-size: 3.6vh;
                 transition: .2s;
                 text-decoration: none;
                 
@@ -49,12 +49,12 @@
                     background-color: $color-corail;
                     border-radius: 100px;
                     transform: translate(-.1rem);
-                    box-shadow: 0 2rem 3rem rgba(0, 0, 0 , .3);
+                    box-shadow: 0 2.666666vh 4vh rgba(0, 0, 0 , .3);
                 }
 }
 
 @mixin cornerBottomLeft{
                 position: fixed;
-                bottom: 2.5rem;
+                bottom: 3.333333vh;
                 left: 2%;
 }

@@ -99,6 +99,7 @@
 }
 
 .btn-J{
+    @include central;
     display: none;
     visibility: hidden;
    
@@ -108,5 +109,43 @@
 
 }
 .btn-J:hover{
+    box-shadow: 0 0rem 3.5rem rgba(255, 255, 255, 1);
+}
+
+.start-panel{
+    flex-wrap: nowrap;
+    
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    justify-content: space-around;
+    top: 65%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index:1;
+    min-width: 15vw;
+    
+}
+
+
+
+
+
+.btn-lot-start{
+    
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+ 
+    
+    
+}
+
+.btn-start{
+    max-height: 15vh;
+    max-width: 15vw;
+    border-radius: 1vh;
+}
+.btn-start:hover{
     box-shadow: 0 0rem 3.5rem rgba(255, 255, 255, 1);
 }

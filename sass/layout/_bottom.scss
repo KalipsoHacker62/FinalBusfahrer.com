@@ -18,32 +18,32 @@
    
 
     &__box{
-        letter-spacing: 2.8rem;
+        letter-spacing: 3.7333333vh;
         animation-name: moveInLeft;
         animation-duration: 1s;
         animation-timing-function: ease-out;
-        font-size: 6rem;
+        font-size: 8vh;
     }
     &__double{
 
         flex-wrap: nowrap;
-        letter-spacing: 2rem;
+        letter-spacing: 2.66666666vh;
         animation-name: moveInRight;
         animation-duration: 1s;
         animation-timing-function: ease-out;
-        font-size: 3rem;
-        margin-bottom: 6rem;
+        font-size: 4vh;
+        margin-bottom: 8vh;
       
     }
 
     &__chat{
-        position: absolute;
-        bottom: 2rem;
-        right: 4.5rem;
+        position: fixed;
+        bottom: 2.666666666vh;
+        right: 6vh;
         display: flex;
         flex-direction: column;
         background-color: white;
-        padding: 1rem;
+        padding: 1.333333333vh;
         z-index:500;
 
 
@@ -54,17 +54,17 @@
         }
         &-text{
             background-color: rgb(255, 255, 255);
-            max-height: 2rem;
-            min-width: 24rem;
+            max-height: 2.666666666vh;
+            min-width: 32vh;
             color: $color-grey;
             border: hidden;
         }
         &-logo{
-            max-height: 2rem;
+            max-height: 2.66666666vh;
             
         }
         &-logo:hover{
-            box-shadow: 0 0rem 3rem rgba(0, 0, 0 , .7);
+            box-shadow: 0 0vh 4vh rgba(0, 0, 0 , .7);
             
             
         }
@@ -73,9 +73,9 @@
             display: flex;
             flex-direction: column-reverse;
             background-color: white;
-            height: 15rem;
-            width: 26rem;
-            margin-bottom: 1rem;
+            height: 20vh;
+            width: 34.666666666vh;
+            margin-bottom: 1.3333333333vh;
 
             overflow-y: scroll;
             scrollbar-width: thin;
@@ -84,4 +84,27 @@
 
     }
 
+}
+
+
+.playing-name{
+
+   
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 500%;
+    font-weight: 400;
+    letter-spacing: .2rem;
+   
+}
+
+.playing-text{
+    
+    
+    text-align: center;
+    text-transform: uppercase;
+    color: black;
+    font-size: 300%;
+    font-weight: 400;
+    letter-spacing: .2rem;
 }

@@ -10,7 +10,7 @@ var Joueur = function(name, carteDuJoueur, numeroJoueur, text){
 
 
 
-var tableauValeurCarte, cartesDonne, cartesPrend, cartesCentrales, tableauDeCarte, test, joueur, nomDuJoueur, nombreJoueur, joueurs, tour, round, nombreDeTour, cartesDuMilieu, tourTotal, playing, skinCarte, skin, nombreDeSkin, aff, tableauDeCarteTire, langue;
+var tableauValeurCarte, cartesDonne, cartesPrend, cartesCentrales, tableauDeCarte, test, joueur, nomDuJoueur, nombreJoueur, joueurs, tour, round, nombreDeTour, cartesDuMilieu, tourTotal, playing, skinCarte, skin, nombreDeSkin, aff, tableauDeCarteTire, langue, numeroCarte;
 
 skin='noir';
 langue=2;
@@ -58,20 +58,13 @@ document.querySelector('.btn-new').addEventListener('click', function(){
 
 
     document.querySelector('.btn-draw').addEventListener('click', function(){
-        if(playing===true){
 
-                partieEnCours.carte=tirageCarte();
-                stockageCarte(getTour(), getRound(), getTourTotal());
-                clearText();
+        if(getRound()>=3){
+            document.getElementById('playing-text').textContent='';
+            play();
             
-                if(getTourTotal()===((14+nombreJoueur*4))+1){
-                    init0();
-                }
-            }
-           
-
+        }
             
-    
         
     });
 
@@ -103,11 +96,23 @@ function stockageCarte(tour, round, tourTotal){
 
     if (round<4){
         joueurs[tour].carteDuJoueur[round]=valeurDuneCarte(partieEnCours.carte);
+    
+        //Affiche le nom du joueur qui doit jouer
+        if((getTour()+1)==nombreJoueur){
+            document.getElementById('playing-name').textContent=document.getElementById('name-'+0).textContent;
+        }else{
+            document.getElementById('playing-name').textContent=document.getElementById('name-'+(getTour()+1)).textContent;
+        }
+        
+
+
         mainDOM.style.display='block';
         mainDOM.src= 'img/'+skin+'/'+partieEnCours.carte+'.png';
 
         
-    }else if(round===4){
+    }else if(round===4 ){
+
+          
         var resetDOM=document.getElementById('mCarte-'+0);
             resetDOM.style.display='block';
             resetDOM.src='img/'+skin+'/'+partieEnCours.carte+'.png';
@@ -169,6 +174,7 @@ function melange(){
         }
         i++;
     }
+    
     return tableauDeCarte;
 }
 
@@ -181,9 +187,11 @@ function attributionDesValeurs(){
     for (i=0; i<tableauDeCarte.length; i++){
         carte=tableauDeCarte[i];
         tableauValeurCarte[i]=valeurDuneCarte(carte);
+        
         }
         
     return tableauValeurCarte;
+    
 }
 
 function distribution(tour){
@@ -200,23 +208,23 @@ function distribution(tour){
                 
                 gorgees=gorgees+tour+1;
                 text=1;
-                console.log('text1');
+                
 
                 
             }else if(partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour<12){
                 gorgees=gorgees+tour+1;
                 text=2;
-                console.log('text2');
+                
 
             }else if (partieEnCours.cartesDonne[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
                 gorgees=gorgees+1;
                 text=3;
-                console.log('text3');
+                
                 
             }else if (partieEnCours.cartesPrend[tour]===joueurs[j].carteDuJoueur[i] && tour>=12){
                 gorgees=gorgees+1;
                 text=4;
-                console.log('text4');
+                
                     
             }
             
@@ -225,38 +233,38 @@ function distribution(tour){
         if(gorgees!=0){
             if(langue===1){
                 if(text===1){         
-                    joueurs[j].text=(joueurs[j].name+ ' donne '+ gorgees +' gorgee·s !');
+                    joueurs[j].text=(joueurs[j].name+ ' donne '+ gorgees +' gorgee·s');
                 }
         
                 if(text===2){
-                    joueurs[j].text=(joueurs[j].name+ ' prend '+ gorgees +' gorgee·s  !');
+                    joueurs[j].text=(joueurs[j].name+ ' prend '+ gorgees +' gorgee·s');
                 }
         
                 if(text===3){
-                    joueurs[j].text=(joueurs[j].name+ ' donne '+ gorgees +' cul-sec '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' donne '+ gorgees +' cul-sec');
                 }
         
                 if(text===4){
-                joueurs[j].text=(joueurs[j].name+ ' prend '+ gorgees +' cul-sec '+' !');
+                joueurs[j].text=(joueurs[j].name+ ' prend '+ gorgees +' cul-sec');
                 }
             }
 
 
             if(langue===2){
                 if(text===1){         
-                    joueurs[j].text=(joueurs[j].name+ ' gives '+ gorgees+' sip·s !');
+                    joueurs[j].text=(joueurs[j].name+ ' gives '+ gorgees+' sip·s');
                 }
         
                 if(text===2){
-                    joueurs[j].text=(joueurs[j].name+ ' takes '+ gorgees+' sip·s !');
+                    joueurs[j].text=(joueurs[j].name+ ' takes '+ gorgees+' sip·s');
                 }
         
                 if(text===3){
-                    joueurs[j].text=(joueurs[j].name+ ' gives '+gorgees+' shot·s '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' gives '+gorgees+' shot·s');
                 }
         
                 if(text===4){
-                    joueurs[j].text=(joueurs[j].name+ ' takes '+gorgees+' shot·s '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' takes '+gorgees+' shot·s');
                 }
             }
 
@@ -265,19 +273,19 @@ function distribution(tour){
             if(langue===3){
                 
                 if(text===1){         
-                    joueurs[j].text=(joueurs[j].name+ ' gibt '+ gorgees+' Schlucke·n !');
+                    joueurs[j].text=(joueurs[j].name+ ' gibt '+ gorgees+' Schlucke·n');
                 }
         
                 if(text===2){
-                    joueurs[j].text=(joueurs[j].name+ ' nimmt '+ gorgees+' Schlucke·n  !');
+                    joueurs[j].text=(joueurs[j].name+ ' nimmt '+ gorgees+' Schlucke·n');
                 }
         
                 if(text===3){
-                    joueurs[j].text=(joueurs[j].name+ ' gibt '+gorgees+' volle·s Glas·er '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' gibt '+gorgees+' volle·s Glas·er');
                 }
         
                 if(text===4){
-                    joueurs[j].text=(joueurs[j].name+ ' nimmt '+gorgees+' volle·s Glas·er '+' !');
+                    joueurs[j].text=(joueurs[j].name+ ' nimmt '+gorgees+' volle·s Glas·er');
                 }
             }
         }
@@ -294,55 +302,57 @@ function distribution(tour){
 function valeurDuneCarte(carte){
 
     switch (true){
-        case (carte===52 || carte ===13 || carte===26 || carte===39):
-            valeurCarte=1;
-            break;
+        
         
         case (carte===1 || carte ===14 || carte===27 || carte===40):
-            valeurCarte=2;
+            valeurCarte=1;
             break;
 
         case (carte===2 || carte ===15 || carte===28 || carte===41):
-            valeurCarte=3;
+            valeurCarte=2;
             break;
 
         case (carte===3 || carte ===16 || carte===29 || carte===42):
-            valeurCarte=4;
+            valeurCarte=3;
             break;
 
         case carte===4 || carte ===17 || carte===30 || carte===43:
-            valeurCarte=5;
+            valeurCarte=4;
             break;
 
         case carte===5 || carte ===18 || carte===31 || carte===44:
-            valeurCarte=6;
+            valeurCarte=5;
             break;
 
         case carte===6 || carte ===19 || carte===32 || carte===45:
-            valeurCarte=7;
+            valeurCarte=6;
             break;
 
         case carte===7 || carte ===20 || carte===33 || carte===46:
-            valeurCarte=8;
+            valeurCarte=7;
             break;
 
         case carte===8 || carte ===21 || carte===34 || carte===47:
-            valeurCarte=9;
+            valeurCarte=8;
             break;
 
         case carte===9 || carte ===22 || carte===35 || carte===48:
-            valeurCarte=10;
+            valeurCarte=9;
             break;
 
         case carte===10 || carte ===23 || carte===36 || carte===49:
-            valeurCarte=11;
+            valeurCarte=10;
             break;
 
         case carte===11 || carte ===24 || carte===37 || carte===50:
-            valeurCarte=12;
+            valeurCarte=11;
             break;
         
         case carte===12 || carte ===25 || carte===38 || carte===51:
+            valeurCarte=12;
+            break;
+
+        case (carte===52 || carte ===13 || carte===26 || carte===39):
             valeurCarte=13;
             break;
 
@@ -351,6 +361,12 @@ function valeurDuneCarte(carte){
 
 
 }
+
+
+
+
+
+
 
 function clearText(){
     for(j=0; j<nombreJoueur; j++){
@@ -429,6 +445,7 @@ function init0(){
     tour=0;
     tourTotal=0;
     round=0;
+    numeroCarte=0;
     cartesDuMilieu=[];
     joueur = {
         name: '',
@@ -437,6 +454,7 @@ function init0(){
     };
     tableauValeurCarte=[];
     tableauValeurCarte=attributionDesValeurs();
+    tableauCouleurCarte=attributionCouleurCarte(tableauDeCarte);
     cartesDonne=[];
     cartesPrend=[];
     cartesCentrale=[cartesDonne, cartesPrend];
@@ -445,11 +463,14 @@ function init0(){
     for(i=0; i<8; i++){
         document.getElementById('name-'+i).textContent=' ';
         document.getElementById('text-'+i).textContent=' ';
+        
         for(j=1; j<5; j++){
             var imgInit=document.getElementById('J'+i+'-carte'+(j));
             imgInit.src='';
-            var btnInit=document.getElementById('J'+i+'-btn-'+(j-1));
-            btnInit.src='';
+            //var btnInit=document.getElementById('J'+i+'-btn-'+(j-1));
+            //btnInit.src='';
+            var btnStartInit=document.getElementById('btn-start-'+j);
+            btnStartInit.src='';
             
         }
     }
@@ -457,6 +478,8 @@ function init0(){
         imgInit=document.getElementById('mCarte-'+u);
         imgInit.src='';
     }
+    document.getElementById('playing-name').textContent=' ';
+    document.getElementById('playing-text').textContent=' ';
     imgInit=document.getElementById('card');
     imgInit.src='img/'+skin+'/0.png';
 
@@ -474,10 +497,53 @@ function init(){
     document.getElementById('comment').textContent='';
     document.getElementById('comment2').textContent='';
 
-    
-    
 }
 
+
+function affichageBtnStart(){
+
+
+    console.log('tour '+getTour());
+    console.log('round '+getRound());
+ 
+
+//Affichage des boutons pendant le early game
+if(getRound()===0 && (getTour())!=nombreJoueur){
+    document.getElementById('btn-start-'+2).src='img/boutons/rouge.png';
+    document.getElementById('btn-start-'+3).src='img/boutons/noir.png';
+
+}else if((getRound()===1 && (getTour())!=nombreJoueur) || getRound()===0 && (getTour())==nombreJoueur){
+    document.getElementById('btn-start-'+2).src='img/boutons/plus.png';
+    document.getElementById('btn-start-'+3).src='img/boutons/moins.png';
+
+}else if(getRound()===2 && (getTour())!=nombreJoueur || getRound()===1 && (getTour())==nombreJoueur){
+    document.getElementById('btn-start-'+2).src='img/boutons/in.png';
+    document.getElementById('btn-start-'+3).src='img/boutons/out.png';
+
+}else if(getRound()===3 && (getTour())!=nombreJoueur || getRound()===2 && (getTour())==nombreJoueur){
+    document.getElementById('btn-start-'+1).src='img/boutons/pic.png';
+    document.getElementById('btn-start-'+2).src='img/boutons/coeur.png';
+    document.getElementById('btn-start-'+3).src='img/boutons/trefle.png';
+    document.getElementById('btn-start-'+4).src='img/boutons/carreaux.png';
+
+}else if(getRound()===4 && (getTour())===0){
+    document.getElementById('playing-name').textContent='';
+}
+
+else if( getRound()===4 && (getTour())!=0){
+    document.getElementById('btn-start-'+1).src='';
+    document.getElementById('btn-start-'+2).src='';
+    document.getElementById('btn-start-'+3).src='';
+    document.getElementById('btn-start-'+4).src='';
+    document.getElementById('playing-name').textContent='';
+    document.getElementById('playing-text').textContent='';
+
+}
+
+
+
+
+}
 //boutons
 
 document.getElementById('btn-partie').addEventListener('click', function(){
@@ -505,14 +571,404 @@ document.getElementById('btn-partie').addEventListener('click', function(){
         joueurs[i]=joueur;
 
     }
+    document.getElementById('playing-name').textContent=document.getElementById('name-0').textContent;
+    document.getElementById('btn-start-'+2).src='img/boutons/rouge.png';
+    document.getElementById('btn-start-'+3).src='img/boutons/noir.png';
+
+});
+
+function couleurCarte(carte){
+    var couleurCarte;
+    if((carte>=1 && carte <= 13) || (carte>=27 && carte<=39)){
+        couleurCarte=0;
+    }else{
+        couleurCarte=1;
+    }
+
+    return couleurCarte;
+
+}
+
+function attributionCouleurCarte(tableauDeCarte){
+    var tableauCouleurCarte;
+    tableauCouleurCarte=[];
+    
+
+    for (i=0; i<tableauDeCarte.length; i++){
+        
+        tableauCouleurCarte[i]=couleurCarte(tableauDeCarte[i]);
+        
+    }
+    
+    return tableauCouleurCarte;
+
+}
+
+function signeCarte(carte){
+var signe;
+    if(carte>=1 && carte<=13){
+        signe=0; //coeur
+    }else if(carte>=14 && carte<=26){
+        signe=1; //pic
+    }else if(carte>=27 && carte<=39){
+        signe=2; //carreaux
+    }else if (carte>=40 && carte<=52){
+        signe=3; //trefle
+    }
+
+    return signe;
+}
+
+function valeurEntreCarte(carte1, carte2, carte3){
+    var carteInEx;
+    
+    
+if(carte1<=carte2){
+    
+    if((carte3>carte1 && carte3<carte2)){
+        carteInEx=0; //intér
+    }else if(carte3==carte1 || carte3==carte2){
+        carteInEx=2; //égale
+    }else{
+        carteInEx=1; //exter
+    }
+
+}else if(carte1>carte2){
+
+    if(carte3<carte1 && carte3>carte2){
+        carteInEx=0; //intér
+    }else if(carte3==carte1 || carte3==carte2){
+        carteInEx=2; //égale
+    }else{
+        carteInEx=1; //exter
+    }
+
+}
+
+
+    
+
+    return carteInEx;
+
+}
+
+function play(){
+    
+    if(playing===true){
+
+        partieEnCours.carte=tirageCarte();
+        stockageCarte(getTour(), getRound(), getTourTotal());
+        clearText();
+    
+        if(getTourTotal()===((14+nombreJoueur*4))+1){
+            init0();
+        }
+        
+    }
+    
+}
+
+
+//evenements pour les boutons early game
+document.getElementById('btn-start-1').addEventListener('click', function(){
+    play();
+    
+    playingText0=textStartLangue0(getLangue());
+    playingText1=textStartLangue1(getLangue());
+    
+
+
+    if((getRound()===3 && getTour()!=0) || (getRound()===4 && getTour()===0)){
+
+
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])==1 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])==1 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])!=1 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])!=1 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
+    
+    
+    
+    for(i=1;i<5;i++){
+        document.getElementById('btn-start-'+i).src='';
+    }
+    affichageBtnStart();
+    
+});
+
+
+
+
+
+document.getElementById('btn-start-2').addEventListener('click', function(){
+    play();
+    playingText0=textStartLangue0(getLangue());
+    playingText1=textStartLangue1(getLangue());
+    
+
+   
+    if((getRound()===0 && getTour()!=0) || (getRound()===1 && getTour()===0)){
+
+        
+        if(couleurCarte(tableauDeCarte[getTourTotal()-1])===0 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(couleurCarte(tableauDeCarte[getTourTotal()-1])===0 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if(couleurCarte(tableauDeCarte[getTourTotal()-1])===1 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(couleurCarte(tableauDeCarte[getTourTotal()-1])===1 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
+    
+    if( (getRound()===1 && getTour()!=0) || (getRound()===2 && getTour()===0) ){
+        
+
+        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])<valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+            
+
+        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])<valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+            
+        }
+        
+        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])>valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])>valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+            
+        }
+        
+        
+    }
+
+    if( (getRound()===2 && getTour()!=0) || (getRound()===3 && getTour()===0) ){
+
+        carte3=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]);
+        carte2=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1-nombreJoueur)]);
+        carte1=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1-nombreJoueur*2)]);
+        
+        
+        
+        if(valeurEntreCarte(carte1, carte2, carte3)===0 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(valeurEntreCarte(carte1, carte2, carte3)===0 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if((valeurEntreCarte(carte1, carte2, carte3)===1 || valeurEntreCarte(carte1, carte2, carte3)==2) && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if((valeurEntreCarte(carte1, carte2, carte3)===1 || valeurEntreCarte(carte1, carte2, carte3)==2) && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
+
+    if( (getRound()===3 && getTour()!=0) || (getRound()===4 && getTour()===0) ){
+
+        
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])===0 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])===0 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])!=0 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])!=0 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
 
     
 
 
+    for(i=1;i<5;i++){
+        document.getElementById('btn-start-'+i).src='';
+    }
+    
+    affichageBtnStart();
+    
+});
 
 
+
+
+document.getElementById('btn-start-3').addEventListener('click', function(){
+    play();
+    playingText0=textStartLangue0(getLangue());
+    playingText1=textStartLangue1(getLangue());
+
+    if((getRound()===0 && getTour()!=0) || (getRound()===1 && getTour()===0)){
+        
+        if(couleurCarte(tableauDeCarte[getTourTotal()-1])===1 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(couleurCarte(tableauDeCarte[getTourTotal()-1])===1 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if(couleurCarte(tableauDeCarte[getTourTotal()-1])===0 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(couleurCarte(tableauDeCarte[getTourTotal()-1])===0 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
+
+    if( (getRound()===1 && getTour()!=0) || (getRound()===2 && getTour()===0) ){
+        
+
+        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])>valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+            
+
+        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])>valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+            
+        }
+        
+        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])<valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])<valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+            
+        }
+        
+        
+    }
+
+
+    if( (getRound()===2 && getTour()!=0) || (getRound()===3 && getTour()===0) ){
+
+        carte3=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]);
+        carte2=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1-nombreJoueur)]);
+        carte1=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1-nombreJoueur*2)]);
+        
+        
+        if(valeurEntreCarte(carte1, carte2, carte3)===1 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(valeurEntreCarte(carte1, carte2, carte3)===1 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if((valeurEntreCarte(carte1, carte2, carte3)===0 || valeurEntreCarte(carte1, carte2, carte3)==2) && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if((valeurEntreCarte(carte1, carte2, carte3)===0 || valeurEntreCarte(carte1, carte2, carte3)==2) && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
+
+    if((getRound()===3 && getTour()!=0) || (getRound()===4 && getTour()===0)){
+
+        
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])==3 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
+
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])==3 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
+        }
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])!=3 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
+        
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])!=3 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
+        }
+        
+        
+    }
+
+    
+
+    for(i=1;i<5;i++){
+        document.getElementById('btn-start-'+i).src='';
+    }
+    
+    affichageBtnStart();
+    
 
 });
+
+
+
+
+
+
+
+
+document.getElementById('btn-start-4').addEventListener('click', function(){
+    play();
+    playingText0=textStartLangue0(getLangue());
+    playingText1=textStartLangue1(getLangue());
+
+
+
+    if((getRound()===3 && getTour()!=0) || (getRound()===4 && getTour()===0)){
+
+        
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])==2 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+' gives four sips';
+
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])==2 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+' gives four sips';
+        }
+        
+        if(signeCarte(tableauDeCarte[getTourTotal()-1])!=2 && getTour()!=0){
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+' takes four sips';
+        
+        }else if(signeCarte(tableauDeCarte[getTourTotal()-1])!=2 && getTour()===0){
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+' takes four sips';
+        }
+        
+        
+    }
+
+    for(i=1;i<5;i++){
+        document.getElementById('btn-start-'+i).src='';
+    }
+    affichageBtnStart();
+    
+});
+
+
 
 
 document.getElementById('btn-skin').addEventListener('click', function(){
@@ -553,7 +1009,6 @@ document.getElementById('btn-skin').addEventListener('click', function(){
                     for(i=0; i<nombreJoueur; i++){
                         var aff=document.getElementById('J'+i+'-carte'+(j+1));
                         aff.src='img/'+skin+'/'+tab[h]+'.png';
-                        
                         h++;
                         
                     }
@@ -565,6 +1020,7 @@ document.getElementById('btn-skin').addEventListener('click', function(){
                 for(i=0; i<nombreJoueur; i++){
                     aff=document.getElementById('J'+i+'-carte'+(j+1));
                     aff.src='img/'+skin+'/'+tab[h]+'.png';
+                    
                     h++;
                 }
             }
@@ -587,7 +1043,7 @@ document.getElementById('btn-skin').addEventListener('click', function(){
                     for(i=0; i<nombreJoueur; i++){
                         var aff=document.getElementById('J'+i+'-carte'+(j+1));
                         aff.src='img/'+skin+'/'+0+'.png';
-                        
+                        console.log('find');
                         h++;
                         
                     }
@@ -721,6 +1177,9 @@ function textLangue(langue){
         document.getElementById('nomSelect-7').placeholder="Joueur 8";
         document.getElementById('new-btn-enregistrer').textContent="Enregistrer";
         document.getElementById('btn-ensavoirplus').textContent="En savoir +";
+
+        playingText0=' donne'+(round+1)+' sips';
+        playingText1=' prend'+(round+1)+' sips';
         
 
     }else if (langue===2){
@@ -760,6 +1219,9 @@ function textLangue(langue){
         document.getElementById('new-btn-enregistrer').textContent="Save";
         document.getElementById('btn-ensavoirplus').textContent="See more";
 
+        playingText0=' gives'+(round+1)+' sips';
+        playingText1=' takes'+(round+1)+' sips';
+
     }else if (langue===3){
         
         document.getElementById('regles').textContent="Regeln";
@@ -797,6 +1259,9 @@ function textLangue(langue){
         document.getElementById('nomSelect-7').placeholder="Spieler 8";
         document.getElementById('new-btn-enregistrer').textContent="Sparen";
         document.getElementById('btn-ensavoirplus').textContent="Find mehr";
+
+        playingText0=' gibt'+(round+1)+' sips';
+        playingText1=' nimmt'+(round+1)+' sips';
         
 
 
@@ -812,6 +1277,9 @@ function textLangue(langue){
 
 function langueInit(langue){
 
+var playingText0;
+var playingText1;
+
     if(langue===1){
         document.getElementById('regles').textContent="Règles";
         document.getElementById('langues').textContent="Langues";
@@ -819,6 +1287,8 @@ function langueInit(langue){
         document.getElementById('premium').textContent="Premium";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="Un"+" "+"jeu"+" "+"allemand";
+
+        
     }
 
     if(langue===2){
@@ -828,6 +1298,7 @@ function langueInit(langue){
         document.getElementById('premium').textContent="Premium";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="A"+" "+"german"+" "+"game";
+
         
     }
 
@@ -838,8 +1309,102 @@ function langueInit(langue){
         document.getElementById('premium').textContent="Prämie";
         document.getElementById('btn-new').textContent="New-game";
         document.getElementById('comment2').textContent="Ein"+" "+"Deutsches"+" "+"Spiel";
+
+        
     }
     
+    return playingText0, playingText1;
+   
+}
+
+function textStartLangue0(langue) {
+
+    if(getTour()!=0){
+        if(langue===1){
+            playingText0=' donne '+(getRound()+1)+' sips';
+        
+        }
+
+        if(langue===2){
+            playingText0=' gives '+(getRound()+1)+' sips';
+            
+            
+        }
+
+        if(langue===3){
+            playingText0=' gibt '+(getRound()+1)+' sips';
+        
+        }
+
+    }
+    if(getTour()===0){
+        if(langue===1){
+            playingText0=' donne '+(getRound())+' sips';
+        
+        }
+
+        if(langue===2){
+            playingText0=' gives '+(getRound())+' sips';
+            
+            
+        }
+
+        if(langue===3){
+            playingText0=' gibt '+(getRound())+' sips';
+        
+        }
+
+    }
+
+
+        
+
+    return playingText0;
+
+}
+
+
+function textStartLangue1(langue) {
+
+    if(getTour()!=0){
+        if(langue===1){
+            playingText1=' prend '+(getRound()+1)+' sips';
+        
+        }
+
+        if(langue===2){
+            playingText1=' takes '+(getRound()+1)+' sips';
+            
+            
+        }
+
+        if(langue===3){
+            playingText1=' nimmt '+(getRound()+1)+' sips';
+        
+        }
+
+    }
+    if(getTour()===0){
+        if(langue===1){
+            playingText1=' prend '+(getRound())+' sips';
+        
+        }
+
+        if(langue===2){
+            playingText1=' takes '+(getRound())+' sips';
+            
+            
+        }
+
+        if(langue===3){
+            playingText1=' nimmt '+(getRound())+' sips';
+        
+        }
+
+    }
+
+    return playingText1;
+
 }
 
 

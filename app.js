@@ -1321,36 +1321,36 @@ function textStartLangue0(langue) {
 
     if(getTour()!=0){
         if(langue===1){
-            playingText0=' donne '+(getRound()+1)+' sips';
+            playingText0=' donne '+(getRound()+1)+' gorgée·s';
         
         }
 
         if(langue===2){
-            playingText0=' gives '+(getRound()+1)+' sips';
+            playingText0=' gives '+(getRound()+1)+' sip·s';
             
             
         }
 
         if(langue===3){
-            playingText0=' gibt '+(getRound()+1)+' sips';
+            playingText0=' gibt '+(getRound()+1)+' Schlucke·n';
         
         }
 
     }
     if(getTour()===0){
         if(langue===1){
-            playingText0=' donne '+(getRound())+' sips';
+            playingText0=' donne '+(getRound())+' gorgée·s';
         
         }
 
         if(langue===2){
-            playingText0=' gives '+(getRound())+' sips';
+            playingText0=' gives '+(getRound())+' sip·s';
             
             
         }
 
         if(langue===3){
-            playingText0=' gibt '+(getRound())+' sips';
+            playingText0=' gibt '+(getRound())+' Schlucke·n';
         
         }
 
@@ -1368,36 +1368,36 @@ function textStartLangue1(langue) {
 
     if(getTour()!=0){
         if(langue===1){
-            playingText1=' prend '+(getRound()+1)+' sips';
+            playingText1=' prend '+(getRound()+1)+' gorgée·s';
         
         }
 
         if(langue===2){
-            playingText1=' takes '+(getRound()+1)+' sips';
+            playingText1=' takes '+(getRound()+1)+' sip·s';
             
             
         }
 
         if(langue===3){
-            playingText1=' nimmt '+(getRound()+1)+' sips';
+            playingText1=' nimmt '+(getRound()+1)+' Schlucke·n';
         
         }
 
     }
     if(getTour()===0){
         if(langue===1){
-            playingText1=' prend '+(getRound())+' sips';
+            playingText1=' prend '+(getRound())+' gorgée·s';
         
         }
 
         if(langue===2){
-            playingText1=' takes '+(getRound())+' sips';
+            playingText1=' takes '+(getRound())+' sip·s';
             
             
         }
 
         if(langue===3){
-            playingText1=' nimmt '+(getRound())+' sips';
+            playingText1=' nimmt '+(getRound())+' Schlucke·n';
         
         }
 

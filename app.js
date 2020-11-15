@@ -945,17 +945,17 @@ document.getElementById('btn-start-4').addEventListener('click', function(){
         
         
         if(signeCarte(tableauDeCarte[getTourTotal()-1])==2 && getTour()!=0){
-            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+' gives four sips';
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText0;
 
         }else if(signeCarte(tableauDeCarte[getTourTotal()-1])==2 && getTour()===0){
-            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+' gives four sips';
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText0;
         }
         
         if(signeCarte(tableauDeCarte[getTourTotal()-1])!=2 && getTour()!=0){
-            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+' takes four sips';
+            document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
         
         }else if(signeCarte(tableauDeCarte[getTourTotal()-1])!=2 && getTour()===0){
-            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+' takes four sips';
+            document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
         }
         
         

@@ -77,11 +77,11 @@ h3 {
   animation-fill-mode: backwards;
   text-align: center;
   padding: 1.5rem 4rem;
-  border-radius: 10rem;
+  border-radius: 13.33333vh;
   font-size: 2.7rem;
   transition: .2s;
-  width: 24rem;
-  top: 30rem; }
+  width: 32vh;
+  top: 40vh; }
 
 .btn-new:hover {
   transform: translate(-0.1rem);

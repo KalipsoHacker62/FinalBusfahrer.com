@@ -751,10 +751,10 @@ document.getElementById('btn-start-2').addEventListener('click', function(){
             
         }
         
-        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])>valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
+        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])>=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
             document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
         
-        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])>valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
+        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])>=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
             document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
             
         }
@@ -858,10 +858,10 @@ document.getElementById('btn-start-3').addEventListener('click', function(){
             
         }
         
-        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])<valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
+        if(valeurDuneCarte(tableauDeCarte[(getTour()-1)])<=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()!=0){
             document.getElementById('playing-text').textContent=joueurs[getTour()-1].name+playingText1;
         
-        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])<valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
+        }else if(valeurDuneCarte(tableauDeCarte[nombreJoueur])<=valeurDuneCarte(tableauDeCarte[(getTourTotal()-1)]) && getTour()===0){
             document.getElementById('playing-text').textContent=joueurs[nombreJoueur-1].name+playingText1;
             
         }
